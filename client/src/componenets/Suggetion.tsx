@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Suggetion = () => {
   const { data: suggetionUsers } = useSuggestedUser();
-console.log(suggetionUsers);
+
   return (
     <>
       {suggetionUsers && suggetionUsers?.length > 0 && (

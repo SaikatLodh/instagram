@@ -71,7 +71,7 @@ const Forgotsendemail = () => {
             className="w-full bg-pink-600 text-white py-2 rounded-md font-semibold hover:bg-pink-700 transition cursor-pointer"
             disabled={loading}
           >
-            Send mail
+            {loading ? "Sending..." : "Send Mail"}
           </button>
         </form>
 

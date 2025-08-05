@@ -15,9 +15,9 @@ const GetExplore = () => {
           </>
         ) : (
           <>
-            {getallposts && getallposts.length > 0 && (
+            {getallposts && getallposts.pages.length > 0 && (
               <>
-                {[...getallposts]?.reverse()?.map((item) => {
+                {[...getallposts.pages[0]]?.reverse()?.map((item) => {
                   return (
                     <>
                       <Explore item={item} key={item._id} />
