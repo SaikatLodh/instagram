@@ -28,6 +28,10 @@ const LeftSidebar = () => {
   const { setShow, show, showNotification, setShowNotification } =
     useContextApi();
   const location = useLocation();
+  const isShowinMobile =
+    location.pathname !== "/chat" &&
+    !location.pathname.startsWith("/updatepost") &&
+    !location.pathname.startsWith("/updatereels");
   const sidebarHandler = (text: string) => {
     if (text === "Logout") {
       dispatch(logout()).then((data) => {
@@ -122,74 +126,76 @@ const LeftSidebar = () => {
 
   return (
     <>
-      <div className=" sm:hidden block">
-        <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 flex justify-around items-center ">
-          {/* Home Icon */}
-          <div className="text-black cursor-pointer">
-            <Link to="/">
-              {" "}
-              {location.pathname === "/" ? (
-                <FaHome size={24} />
-              ) : (
-                <IoHomeOutline size={24} />
-              )}
-            </Link>
-          </div>
+      {isShowinMobile && (
+        <div className=" sm:hidden block">
+          <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 flex justify-around items-center ">
+            {/* Home Icon */}
+            <div className="text-black cursor-pointer">
+              <Link to="/">
+                {" "}
+                {location.pathname === "/" ? (
+                  <FaHome size={24} />
+                ) : (
+                  <IoHomeOutline size={24} />
+                )}
+              </Link>
+            </div>
 
-          <div className="text-black cursor-pointer">
-            <Link to="/explore">
-              {" "}
-              {location.pathname === "/explore" ? (
-                <MdExplore size={24} />
-              ) : (
-                <MdOutlineExplore size={24} />
-              )}
-            </Link>
-          </div>
+            <div className="text-black cursor-pointer">
+              <Link to="/explore">
+                {" "}
+                {location.pathname === "/explore" ? (
+                  <MdExplore size={24} />
+                ) : (
+                  <MdOutlineExplore size={24} />
+                )}
+              </Link>
+            </div>
 
-          {/* Search Icon */}
-          <div
-            className="text-black cursor-pointer"
-            onClick={() => sidebarHandler("Search")}
-          >
-            {show ? <FaSearch size={24} /> : <IoIosSearch size={24} />}
-          </div>
+            {/* Search Icon */}
+            <div
+              className="text-black cursor-pointer"
+              onClick={() => sidebarHandler("Search")}
+            >
+              {show ? <FaSearch size={24} /> : <IoIosSearch size={24} />}
+            </div>
 
-          {/* Add Post Icon */}
-          <div className="text-black cursor-pointer">
-            <Link to="/createpost">
-              {" "}
-              {location.pathname === "/createpost" ? (
-                <FaRegPlusSquare size={24} />
-              ) : (
-                <CiSquarePlus size={24} />
-              )}
-            </Link>
-          </div>
+            {/* Add Post Icon */}
+            <div className="text-black cursor-pointer">
+              <Link to="/createpost">
+                {" "}
+                {location.pathname === "/createpost" ? (
+                  <FaRegPlusSquare size={24} />
+                ) : (
+                  <CiSquarePlus size={24} />
+                )}
+              </Link>
+            </div>
 
-          {/* Reels Icon */}
-          <div className="text-black cursor-pointer">
-            <Link to="/getreels">
-              {location.pathname === "/getreels" ? (
-                <RiVideoFill size={24} />
-              ) : (
-                <GoVideo size={24} />
-              )}
-            </Link>
-          </div>
+            {/* Reels Icon */}
+            <div className="text-black cursor-pointer">
+              <Link to="/getreels">
+                {location.pathname === "/getreels" ? (
+                  <RiVideoFill size={24} />
+                ) : (
+                  <GoVideo size={24} />
+                )}
+              </Link>
+            </div>
 
-          {/* Profile Icon */}
-          <div className="text-black cursor-pointer">
-            <Link to="/profile">
-              <img
-                src={user?.profilePicture?.url}
-                alt=""
-                className="w-[30px] h-[30px] rounded-full object-center object-cover"
-              />
-            </Link>
+            {/* Profile Icon */}
+            <div className="text-black cursor-pointer">
+              <Link to="/profile">
+                <img
+                  src={user?.profilePicture?.url}
+                  alt=""
+                  className="w-[30px] h-[30px] rounded-full object-center object-cover"
+                />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="w-[15%] flex-col gap-5 px-5 py-4 sm:flex hidden">
         {sidebarItems.map((item, index) => {

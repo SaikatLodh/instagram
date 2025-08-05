@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation } from "@tanstack/react-query";
 import { createPost } from "../../../api/functions/reels/createpost";
 import { updatePost } from "../../../api/functions/reels/updatepost";
 import axios from "axios";
@@ -34,9 +34,11 @@ export const useCreatePost = () => {
 };
 
 export const useGetPost = () => {
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: [reels],
     queryFn: getAllPost,
+    initialPageParam: 0,
+    getNextPageParam: () => undefined,
   });
 };
 

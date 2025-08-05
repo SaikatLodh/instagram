@@ -23,18 +23,18 @@ const Checkauth = ({
   }
 
   if (
-    (!isAuth &&
-      (location.pathname === "/" ||
-        location.pathname === "/createpost" ||
-        location.pathname === "/explore" ||
-        location.pathname === "/chat" ||
-        location.pathname === "/notification" ||
-        location.pathname === "/profile" ||
-        location.pathname === "/profileedit" ||
-        location.pathname === "/getreels" ||
-        location.pathname.startsWith("/otheraccount") ||
-        location.pathname.startsWith("/updatepost"))) ||
-    location.pathname.startsWith("/updatereels")
+    !isAuth &&
+    (location.pathname === "/" ||
+      location.pathname === "/createpost" ||
+      location.pathname === "/explore" ||
+      location.pathname === "/chat" ||
+      location.pathname === "/notification" ||
+      location.pathname === "/profile" ||
+      location.pathname === "/profileedit" ||
+      location.pathname === "/getreels" ||
+      location.pathname.startsWith("/otheraccount") ||
+      location.pathname.startsWith("/updatepost") ||
+      location.pathname.startsWith("/updatereels"))
   ) {
     return <Navigate to="/login" />;
   }

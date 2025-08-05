@@ -24,7 +24,7 @@ const Usergetbookmark = ({
                 {[...user.bookmarks]?.reverse()?.map((item, index) => {
                   return (
                     <div
-                      className="sm:w-[49%] w-[48% relative cursor-pointer"
+                      className="sm:w-[49%] w-[48%] relative cursor-pointer"
                       key={index}
                     >
                       <img

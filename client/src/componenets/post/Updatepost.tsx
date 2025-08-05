@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useUpdatePost } from "../../../hooks/react-query/query-hooks/postqueryhooks";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useUpdateReels } from "../../../hooks/react-query/query-hooks/rellsqueryhook";
-
+import { MdArrowBack } from "react-icons/md";
 type Inputs = {
   caption: string | null;
   contant: FileList;
@@ -65,7 +65,13 @@ const Updatepost = () => {
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <Link to={`/profile`} className="sm:hidden block">
+        <div className="fixed w-[30px] h-[30px] bg-[#000000] z-50 rounded-full flex justify-center items-center m-3 ">
+          <MdArrowBack color="white" />
+        </div>
+      </Link>
+
+      <div className="min-h-screen flex items-center justify-center bg-white sm:w-full w-[90%] m-auto">
         <div className="w-full max-w-sm text-center">
           <h2 className="font-bold text-lg mb-6">
             Update{" "}

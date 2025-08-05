@@ -123,9 +123,9 @@ const Chat = () => {
           </section>
         ) : (
           <div className="flex flex-col items-center justify-center mx-auto">
-            <BiSolidMessageSquareCheck className="w-32 h-32 my-4" />
+            <BiSolidMessageSquareCheck className="sm:w-32 sm:h-32 w-20 h-20 my-4" />
             <h1 className="font-medium">Your messages</h1>
-            <span className="sm:text-center">
+            <span className="sm:text-center text-center">
               Send a message to start a chat.
             </span>
           </div>

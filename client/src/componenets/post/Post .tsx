@@ -39,7 +39,7 @@ const Post = ({
         isPopupOpen={isPopupOpen}
         setIsPopupOpen={setIsPopupOpen}
       />
-      <div className="max-w-lg mx-auto bg-white shadow-md rounded-xl my-6">
+      <div className="sm:w-[40%] w-[98%] mx-auto bg-white shadow-md rounded-xl my-6">
         <div className="flex items-center px-4 py-3">
           <Link
             to={`${
