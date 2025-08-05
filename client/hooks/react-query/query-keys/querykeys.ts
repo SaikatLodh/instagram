@@ -1,0 +1,10 @@
+export const post = "post";
+export const reels = "reels";
+export const user = "user";
+export const chatUser = "chatuser";
+export const suggesteduser = "suggustedusers";
+export const searchuser = "searchuser";
+export const comment = "comment";
+export const rellscomment = "reelscomment";
+export const message = "message";
+export const story = "story";
