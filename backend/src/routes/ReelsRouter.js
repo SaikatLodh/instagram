@@ -10,7 +10,7 @@ import {
   bookmarkReels,
 } from "../controllers/ReelsController.js";
 import { upload } from "../middleware/multermiddleware.js";
-import { verifyJWT } from "../middleware/authMiddleware.js";
+import { verifyJWT } from "../middleware/authenticationMiddleware.js";
 
 const router = Router();
 

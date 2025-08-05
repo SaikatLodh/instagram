@@ -4,7 +4,7 @@ import {
   getStories,
   deleteStory,
 } from "../controllers/storyController.js";
-import { verifyJWT } from "../middleware/authMiddleware.js";
+import { verifyJWT } from "../middleware/authenticationMiddleware.js";
 import { upload } from "../middleware/multermiddleware.js";
 const router = express.Router();
 

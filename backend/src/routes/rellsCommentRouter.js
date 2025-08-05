@@ -3,7 +3,7 @@ import {
   addReelsComment,
   getCommentsOfReels,
 } from "../controllers/reelsCommentController.js";
-import { verifyJWT } from "../middleware/authMiddleware.js";
+import { verifyJWT } from "../middleware/authenticationMiddleware.js";
 
 
 const router = Router();
