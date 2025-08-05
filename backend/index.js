@@ -12,14 +12,17 @@ dotenv.config({
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "*",
+    origin: process.env.CORS_ORIGIN || process.env.SECOND_CORS_ORIGIN,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
 );
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", process.env.CORS_ORIGIN || "*");
+  res.header(
+    "Access-Control-Allow-Origin",
+    process.env.CORS_ORIGIN || process.env.SECOND_CORS_ORIGIN
+  );
   res.header(
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, OPTIONS,HEAD,PATCH"

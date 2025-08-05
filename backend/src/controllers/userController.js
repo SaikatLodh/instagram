@@ -277,7 +277,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const resetPasswordUrl = `${process.env.PASSWORD_URL}/forgotresetpassword/${resetToken}`;
+  const resetPasswordUrl = `${process.env.PASSWORD_URL || process.env.SECONS_PASSWORD_URL}/forgotresetpassword/${resetToken}`;
 
   const message = `Your Reset Password Token is:- \n\n ${resetPasswordUrl}  \n\n If
      You've not requested this email then, please ignore it.`;
