@@ -9,7 +9,7 @@ const verifyJWT = asyncHandler(async (req, _, next) => {
       req.cookies?.accessToken ||
       req.header("Authorization")?.replace("Bearer ", "") ||
       req.headers["x-access-token"];
-    //    console.log(token)
+
     if (!token) {
       throw new ApiError(401, "Unauthorized request");
     }

@@ -9,7 +9,7 @@ import {
   deletePost,
   bookmarkPost,
 } from "../controllers/postController.js";
-import { verifyJWT } from "../middleware/authmiddleware.js";
+import { verifyJWT } from "../middleware/authMiddleware.js";
 import { upload } from "../middleware/multermiddleware.js";
 
 const router = Router();

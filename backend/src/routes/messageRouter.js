@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { sendMessage, getMessage, getChatlist  } from "../controllers/messageController.js"
-import { verifyJWT } from "../middleware/authmiddleware.js"
+import { verifyJWT } from "../middleware/authMiddleware.js"
 
 const router = Router()
 
