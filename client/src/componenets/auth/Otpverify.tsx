@@ -2,6 +2,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store/store";
 import { resetLoading, verifyotp } from "../../../store/auth/auth";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   otp: number;
@@ -16,7 +17,7 @@ const Otpverify = () => {
   } = useForm<Inputs>();
   const { loading, email } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
-
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const verifyDatta = {
       email: email as string,
@@ -26,7 +27,7 @@ const Otpverify = () => {
       .then((res) => {
         if (res.payload) {
           reset();
-          location.replace("/register");
+          navigate("/register");
         }
       })
       .finally(() => {

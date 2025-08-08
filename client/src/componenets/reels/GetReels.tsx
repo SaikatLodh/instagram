@@ -36,10 +36,14 @@ const GetReels = () => {
             <img src={img} alt="" />
           </div>
         </>
-      ) : (
-        currentDisplayedPosts &&
-        currentDisplayedPosts.length > 0 &&
+      ) : currentDisplayedPosts && currentDisplayedPosts.length > 0 ? (
         currentDisplayedPosts?.map((items) => <Reels items={items} />)
+      ) : (
+        <>
+          <div className="flex justify-center items-center w-full h-full">
+            <h1 className="text-2xl text-gray-500">No Reels Found</h1>
+          </div>
+        </>
       )}
       {hasMoreLocal && (
         <div ref={ref} className="flex justify-center">

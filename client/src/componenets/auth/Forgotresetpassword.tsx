@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { AppDispatch, RootState } from "../../../store/store";
 import { resetLoading, resetpassword } from "../../../store/auth/auth";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 type Inputs = {
   password: string;
@@ -24,13 +24,13 @@ const Forgotresetpassword = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     dispatch(resetpassword({ data, token }))
       .then((res) => {
         if (res.payload) {
           reset();
-          location.replace("/login");
+          navigate("/login");
         }
       })
       .finally(() => {

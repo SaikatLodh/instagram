@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -19,7 +19,7 @@ const Login = () => {
   } = useForm<Inputs>();
   const { loading } = useSelector((state: RootState) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
     dispatch(login(data))
@@ -27,6 +27,7 @@ const Login = () => {
         if (res.payload) {
           reset();
           dispatch(getprofile());
+          navigate("/");
         }
       })
       .finally(() => {

@@ -151,7 +151,7 @@ export const resetpassword = createAsyncThunk(
     token: string | undefined;
   }) => {
     try {
-      const response = await axiosInstance.post(
+      const response = await axiosInstance.patch(
         `${endPoints.auth.forgotresetpassword}/${token}`,
         data,
         {

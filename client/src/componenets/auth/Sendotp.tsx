@@ -2,7 +2,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { AppDispatch, RootState } from "../../../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { otpsend, resetLoading, setEmail } from "../../../store/auth/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type Inputs = {
   email: string;
@@ -17,14 +17,14 @@ const Sendotp = () => {
   } = useForm<Inputs>();
   const { loading } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
-
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     dispatch(otpsend(data))
       .then((res) => {
         if (res.payload.success) {
           reset();
           dispatch(setEmail(data.email));
-          location.replace("/verifyotp");
+          navigate("/verifyotp");
         }
       })
       .finally(() => {

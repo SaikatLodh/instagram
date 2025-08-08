@@ -17,7 +17,7 @@ import { FaRegMessage } from "react-icons/fa6";
 import { CiSquarePlus } from "react-icons/ci";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { RiVideoFill } from "react-icons/ri";
-
+import { FaRegHeart } from "react-icons/fa";
 const LeftSidebar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -90,12 +90,15 @@ const LeftSidebar = () => {
       text: "Messages",
     },
     {
-      icon:
+      icon: showNotification ? (
         notifications.length > 0 ? (
           <FaHeart className="text-[#FF1643]" />
         ) : (
           <FaHeart />
-        ),
+        )
+      ) : (
+        <FaRegHeart />
+      ),
       text: "Notifications",
     },
     {

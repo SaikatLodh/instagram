@@ -13,7 +13,7 @@ const Chat = () => {
   const { user, selectedUser } = useSelector((store: RootState) => store.auth);
   const { onlineUsers } = useSelector((store: RootState) => store.onlioneUsers);
   const dispatch = useDispatch<AppDispatch>();
-  const { data } = useChatusers();
+  const { data, isLoading } = useChatusers();
   const { mutate } = useSendMessage();
   React.useEffect(() => {
     if (data) {
@@ -51,8 +51,71 @@ const Chat = () => {
           <h1 className="font-bold mb-7 px-3 text-xl">{user?.username}</h1>
           <hr className="mb-4 border-gray-300" />
           <div className="overflow-y-auto h-[80vh]">
-            {selectedUsers &&
-              selectedUsers?.length > 0 &&
+            {isLoading ? (
+              <div className="mx-auto w-full max-w-sm rounded-md border border-blue-300 p-4">
+                {" "}
+                <div className="flex animate-pulse space-x-4">
+                  {" "}
+                  <div className="size-10 rounded-full bg-gray-200"></div>{" "}
+                  <div className="flex-1 space-y-6 py-1">
+                    {" "}
+                    <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    <div className="space-y-3">
+                      {" "}
+                      <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    </div>{" "}
+                  </div>{" "}
+                </div>
+                <div className="flex animate-pulse space-x-4">
+                  {" "}
+                  <div className="size-10 rounded-full bg-gray-200"></div>{" "}
+                  <div className="flex-1 space-y-6 py-1">
+                    {" "}
+                    <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    <div className="space-y-3">
+                      {" "}
+                      <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    </div>{" "}
+                  </div>{" "}
+                </div>
+                <div className="flex animate-pulse space-x-4">
+                  {" "}
+                  <div className="size-10 rounded-full bg-gray-200"></div>{" "}
+                  <div className="flex-1 space-y-6 py-1">
+                    {" "}
+                    <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    <div className="space-y-3">
+                      {" "}
+                      <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    </div>{" "}
+                  </div>{" "}
+                </div>
+                <div className="flex animate-pulse space-x-4">
+                  {" "}
+                  <div className="size-10 rounded-full bg-gray-200"></div>{" "}
+                  <div className="flex-1 space-y-6 py-1">
+                    {" "}
+                    <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    <div className="space-y-3">
+                      {" "}
+                      <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    </div>{" "}
+                  </div>{" "}
+                </div>
+                <div className="flex animate-pulse space-x-4">
+                  {" "}
+                  <div className="size-10 rounded-full bg-gray-200"></div>{" "}
+                  <div className="flex-1 space-y-6 py-1">
+                    {" "}
+                    <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    <div className="space-y-3">
+                      {" "}
+                      <div className="h-2 rounded bg-gray-200"></div>{" "}
+                    </div>{" "}
+                  </div>{" "}
+                </div>
+              </div>
+            ) : selectedUsers && selectedUsers?.length > 0 ? (
               selectedUsers?.map((suggestedUser) => {
                 const isOnline = onlineUsers?.includes(suggestedUser?._id);
                 return (
@@ -81,7 +144,17 @@ const Chat = () => {
                     </div>
                   </>
                 );
-              })}
+              })
+            ) : (
+              <>
+                <div className="flex flex-col items-center justify-center mx-auto pt-8">
+                  <h1 className="font-medium">No users found</h1>
+                  <span className="sm:text-center text-center">
+                    Start following users to chat with them.
+                  </span>
+                </div>
+              </>
+            )}
           </div>
         </section>
         {selectedUser ? (

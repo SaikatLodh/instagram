@@ -8,6 +8,7 @@ import { useLikeUnlikeReels } from "../../../hooks/react-query/query-hooks/likeu
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Reels = ({ items }: { items: PostType }) => {
   const { user } = useSelector((state: RootState) => state.auth);
   const { mutate: mutatefollowunfollow } = useFollowUnfollow(
@@ -58,30 +59,38 @@ const Reels = ({ items }: { items: PostType }) => {
           </div>
 
           {/* Footer Info */}
-          <div className="absolute bottom-10 left-4 text-white text-sm">
-            <div className="mb-1 flex gap-2 items-center">
-              <img
-                src={items.author.profilePicture?.url}
-                alt=""
-                className="w-[30px] h-[30px] rounded-full"
-              />
-              <span className="font-bold text-[17px]">
-                {items.author.username}
-              </span>{" "}
-              {items.author._id !== user?._id && (
-                <>
-                  <h6
-                    className="text-[#86a6fd] cursor-pointer"
-                    onClick={() => mutatefollowunfollow()}
-                  >
-                    {items.author.followers.includes(user?._id as string)
-                      ? "Following"
-                      : "Follow"}
-                  </h6>
-                </>
-              )}
+          <Link
+            to={`${
+              items.author._id === user?._id
+                ? "/profile"
+                : `/otheraccount/${items.author._id} `
+            }`}
+          >
+            <div className="absolute bottom-10 left-4 text-white text-sm">
+              <div className="mb-1 flex gap-2 items-center">
+                <img
+                  src={items.author.profilePicture?.url}
+                  alt=""
+                  className="w-[30px] h-[30px] rounded-full"
+                />
+                <span className="font-bold text-[17px]">
+                  {items.author.username}
+                </span>{" "}
+                {items.author._id !== user?._id && (
+                  <>
+                    <h6
+                      className="text-[#86a6fd] cursor-pointer"
+                      onClick={() => mutatefollowunfollow()}
+                    >
+                      {items.author.followers.includes(user?._id as string)
+                        ? "Following"
+                        : "Follow"}
+                    </h6>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </>

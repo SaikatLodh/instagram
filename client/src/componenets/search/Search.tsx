@@ -43,7 +43,7 @@ const Search = () => {
         </div>
 
         <div className="p-4">
-          {recentSearches &&
+          {recentSearches && recentSearches.length > 0 ? (
             recentSearches.map((user) => (
               <Link
                 to={`${
@@ -81,7 +81,15 @@ const Search = () => {
                   </div>
                 </div>
               </Link>
-            ))}
+            ))
+          ) : (
+            <>
+              <p className="text-lg text-zinc-500 ">No results found</p>
+              <p className="text-sm text-zinc-400 mt-2">
+                Try searching for a username.
+              </p>
+            </>
+          )}
         </div>
       </div>
     </>
